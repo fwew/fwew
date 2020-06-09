@@ -17,8 +17,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/c-bata/go-prompt"
 	"strings"
+
+	"github.com/c-bata/go-prompt"
+	fwew "github.com/fwew/fwew-lib/v5"
 )
 
 func executor(cmds string) {
@@ -32,7 +34,11 @@ func executor(cmds string) {
 				if *numConvert {
 					fmt.Println(Convert(cmd, *reverse))
 				} else {
-					printResults(fwew(cmd))
+					if *reverse {
+						output(fwew.TranslateToNavi(cmd, *language))
+					} else {
+						output(fwew.TranslateFromNavi(cmd, *language))
+					}
 				}
 			}
 		} else if len(csvCmds) == 1 {

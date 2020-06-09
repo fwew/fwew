@@ -1,4 +1,4 @@
-SOURCES = affixes.go affixes_test.go completer.go config.go fwew.go fwew_test.go lib.go lib_test.go numbers.go numbers_test.go txt.go version.go word.go
+SOURCES = completer.go config.go fwew.go lib.go numbers.go numbers_test.go txt.go
 TAG = build
 OS = nix
 ifeq ($(OS),nix)

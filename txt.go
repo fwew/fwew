@@ -20,6 +20,8 @@ import (
 	"os/user"
 	"path/filepath"
 	"strings"
+
+	fwew "github.com/fwew/fwew-lib/v5"
 )
 
 var usr, _ = user.Current()
@@ -208,8 +210,7 @@ func init() {
 	texts["name"] = "fwew"
 	texts["tip"] = "type \"/help\" or \"/commands\" for more info"
 	texts["author"] = "Tirea Aean"
-	Version.DictBuild = SHA1Hash(texts["dictionary"])
-	texts["header"] = fmt.Sprintf("%s\n%s\n", Version, texts["tip"])
+	texts["header"] = fmt.Sprintf("%s\n%s\n", fwew.Version.String(), texts["tip"])
 	texts["languages"] = "de, en, et, fr, hu, nl, pl, ru, sv"
 	texts["POSFilters"] = "allvtr.n.num.pn.adv.adj.vin.v.inter.part.svin.adp.adv., n.vtrm.vim.conj.pn., sbd.n., intj.intj."
 	texts["POSFilters"] += "vtrm., vtr.part., intj.vin., svin.prop.n.affixvin., intj.dem.dem., n.sbd.n., adv."
