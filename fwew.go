@@ -158,7 +158,7 @@ func printHelp() {
 
 func output(words []fwew.Word) {
 	for i, w := range words {
-		entry, err := w.ToOutputLine(i, *markdown, *showIPA, *showInfixes, *showDashed, *showInfDots, *showSource)
+		entry, err := w.ToOutputLine(i, *markdown, *showIPA, *showInfixes, *showDashed, *showInfDots, *showSource, *language)
 		if err != nil {
 			panic(err)
 		}
@@ -207,13 +207,13 @@ func slashCommand(s string, argsMode bool) {
 		setArg += strings.Join(args, space)
 		setFlags(setArg, argsMode)
 	case "/list":
-		words, err := fwew.List(args, *language)
+		words, err := fwew.List(args)
 		if err != nil {
 			panic(err)
 		}
 		output(words)
 	case "/random":
-		words, err := fwew.Random(*language, k, args)
+		words, err := fwew.Random(k, args)
 		if err != nil {
 			panic(err)
 		}
@@ -240,6 +240,11 @@ func slashCommand(s string, argsMode bool) {
 }
 
 func main() {
+	// Assure Dictionary is downloaded
+	err := fwew.AssureDict()
+	if err != nil {
+		panic(err)
+	}
 	var (
 		argsMode bool
 		fileMode bool
