@@ -15,31 +15,7 @@
 // Package main contains all the things. lib.go handles common functions.
 package main
 
-import (
-	"crypto/sha1"
-	"fmt"
-	"io"
-	"log"
-	"net/http"
-	"os"
-	"strings"
-	"unicode"
-)
-
-// Contains returns true if anything in q is also in s
-func Contains(s []string, q []string) bool {
-	if len(q) == 0 || len(s) == 0 {
-		return false
-	}
-	for _, x := range q {
-		for _, y := range s {
-			if y == x {
-				return true
-			}
-		}
-	}
-	return false
-}
+import "unicode"
 
 // ContainsStr returns true if q is in s
 func ContainsStr(s []string, q string) bool {
@@ -75,16 +51,6 @@ func DeleteEmpty(s []string) []string {
 	return DeleteElement(s, "")
 }
 
-// Index return the index of q in s
-func Index(s []string, q string) int {
-	for i, v := range s {
-		if v == q {
-			return i
-		}
-	}
-	return -1
-}
-
 // IndexStr return the index of q in s
 func IndexStr(s string, q rune) int {
 	for i, v := range s {
@@ -116,16 +82,6 @@ func Reverse(s string) string {
 	return string(runes[n:])
 }
 
-// StripChars strips all the characters in chr out of str
-func StripChars(str, chr string) string {
-	return strings.Map(func(r rune) rune {
-		if strings.IndexRune(chr, r) < 0 {
-			return r
-		}
-		return -1
-	}, str)
-}
-
 // Valid validates range of integers for input
 func Valid(input int64, reverse bool) bool {
 	const (
@@ -142,102 +98,4 @@ func Valid(input int64, reverse bool) bool {
 		return true
 	}
 	return false
-}
-
-// DownloadDict downloads the latest released version of the dictionary file
-func DownloadDict() error {
-	var (
-		filepath = Text("dictionary")
-		url      = Text("dictURL")
-	)
-	out, err := os.Create(filepath)
-	if err != nil {
-		return err
-	}
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
-	}
-	_, err = io.Copy(out, resp.Body)
-	if err != nil {
-		return err
-	}
-	err = out.Close()
-	if err != nil {
-		return err
-	}
-	err = resp.Body.Close()
-	if err != nil {
-		return err
-	}
-	fmt.Println(Text("dlSuccess"))
-	return nil
-}
-
-// GLOB https://github.com/ryanuber/go-glob
-// The character which is treated like a glob
-const GLOB = "*"
-
-// Glob will test a string pattern, potentially containing globs, against a
-// subject string. The result is a simple true/false, determining whether or
-// not the glob pattern matched the subject text.
-func Glob(pattern, subj string) bool {
-	// Empty pattern can only match empty subject
-	if pattern == "" {
-		return subj == pattern
-	}
-
-	// If the pattern _is_ a glob, it matches everything
-	if pattern == GLOB {
-		return true
-	}
-
-	parts := strings.Split(pattern, GLOB)
-
-	if len(parts) == 1 {
-		// No globs in pattern, so test for equality
-		return subj == pattern
-	}
-
-	leadingGlob := strings.HasPrefix(pattern, GLOB)
-	trailingGlob := strings.HasSuffix(pattern, GLOB)
-	end := len(parts) - 1
-
-	// Go over the leading parts and ensure they match.
-	for i := 0; i < end; i++ {
-		idx := strings.Index(subj, parts[i])
-
-		switch i {
-		case 0:
-			// Check the first section. Requires special handling.
-			if !leadingGlob && idx != 0 {
-				return false
-			}
-		default:
-			// Check that the middle parts match.
-			if idx < 0 {
-				return false
-			}
-		}
-
-		// Trim evaluated text from subj as we loop over the pattern.
-		subj = subj[idx+len(parts[i]):]
-	}
-
-	// Reached the last section. Requires special handling.
-	return trailingGlob || strings.HasSuffix(subj, parts[end])
-}
-
-// SHA1Hash gets hash of dictionary file
-func SHA1Hash(filename string) string {
-	f, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
-	h := sha1.New()
-	if _, err := io.Copy(h, f); err != nil {
-		log.Fatal(err)
-	}
-	return fmt.Sprintf("%x", h.Sum(nil))[0:8]
 }
