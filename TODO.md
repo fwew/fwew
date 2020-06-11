@@ -2,6 +2,12 @@
 
 ## BUGS
 
+fwew-lib 5.1+ Bugs:
+- /list words last 11 (on any number larger than 10)
+- /random N
+- /random
+- /random N where WHAT COND SPEC
+
 ## ROADMAP
 
 ### In Progress
