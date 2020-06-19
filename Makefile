@@ -34,7 +34,7 @@ docker:
 	docker run -it --rm tirea/fwew:$(TAG) -v -r test
 
 copy:
-	@test -n "$(BIN)" || (echo "Error: BIN variable not set. BIN must be set to one of the following:" ; ls bin | grep -v fwew ; exit 1)
+	@test -n "$(BIN)" || (echo "Error: BIN variable not set. BIN must be set to one of the following:" ; /bin/ls bin | grep -v fwew ; exit 1)
 	$(CP) bin/$(BIN)/fwew $(BINDEST)/
 	cp -r .fwew ~/
 
