@@ -19,6 +19,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/c-bata/go-prompt"
@@ -178,6 +179,8 @@ func slashCommand(s string, argsMode bool) {
 		setArg  string
 		confArg string
 		k       int
+		err     error
+		words   []fwew.Word
 	)
 	sc = strings.Split(s, space)
 	sc = DeleteEmpty(sc)
@@ -213,11 +216,27 @@ func slashCommand(s string, argsMode bool) {
 		}
 		output(words)
 	case "/random":
-		words, err := fwew.Random(k, args)
-		if err != nil {
-			panic(err)
+		if nargs > 0 {
+			// get number of random words requested
+			k, err = strconv.Atoi(args[0])
+			if err != nil {
+				fmt.Println(Text("invalidNumericError") + "\n")
+			} else {
+				// get filter arguments
+				if nargs >= 5 && args[1] == "where" {
+					args = args[2:]
+				} else {
+					args = []string{}
+				}
+				words, err = fwew.Random(k, args)
+				if err != nil {
+					panic(err)
+				}
+				output(words)
+			}
+		} else {
+			fmt.Println()
 		}
-		output(words)
 	case "/lenition", "/len":
 		fmt.Println(Text("lenTable"))
 	case "/update":
