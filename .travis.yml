@@ -9,8 +9,5 @@ os:
   - windows
   - osx
 
-services:
-  - docker
-
 script:
   - go test -v
