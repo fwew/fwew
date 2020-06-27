@@ -26,23 +26,12 @@ import (
 	fwew "github.com/fwew/fwew-lib/v5"
 )
 
-// Global
+// global constants
 const (
-	idField  int    = 0  // dictionary.txt line Field 0 is Database ID
-	lcField  int    = 1  // dictionary.txt line field 1 is Language Code
-	navField int    = 2  // dictionary.txt line field 2 is Na'vi word
-	ipaField int    = 3  // dictionary.txt line field 3 is IPA data
-	infField int    = 4  // dictionary.txt line field 4 is Infix location data
-	posField int    = 5  // dictionary.txt line field 5 is Part of Speech data
-	defField int    = 6  // dictionary.txt line field 6 is Local definition
-	srcField int    = 7  // dictionary.txt line field 7 is Source data
-	stsField int    = 8  // dictionary.txt line field 8 is Stressed syllable #
-	sylField int    = 9  // dictionary.txt line field 9 is syllable breakdown
-	ifdField int    = 10 // dictionary.txt line field 10 is dot-style infix data
-	space    string = " "
+	space string = " "
 )
 
-// flags / options
+// global flags & options
 var (
 	configuration            Config
 	configure, filename      *string
