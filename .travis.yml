@@ -1,20 +1,16 @@
 language: go
 
 go:
-  - 1.10.x
-  - 1.11.x
-  - 1.12.x
   - 1.13.x
-  - master
+  - 1.14.x
+
+os:
+  - linux
+  - windows
+  - osx
 
 services:
   - docker
 
-install:
-  - go get github.com/mattn/go-tty
-  - go get github.com/mattn/go-isatty
-  - go get github.com/mattn/go-colorable
-  - go get github.com/mattn/go-runewidth
-  - go get github.com/c-bata/go-prompt
-  - go get github.com/pkg/term
+script:
   - make all
