@@ -166,7 +166,7 @@ func output(words []fwew.Word) {
 		fmt.Println(entry)
 	}
 	if len(words) == 0 {
-		fmt.Println()
+		fmt.Println(Text("none"))
 	}
 }
 
