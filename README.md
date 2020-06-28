@@ -210,7 +210,7 @@ fwew -v -r word
 You can search even quicker without re-running the program to update what information you want to see. 
 Use the set[] and unset[] keywords to update the search options. Even on the command line! To set or unset 
 multiple options at once, separate them with a comma. Language and Part of Speech Filter cannot be unset, just 
-set to another value. The default values are l=eng and p=all
+set to another value. The default values are l=en and p=all
 
 ```
 fwew -r -ipa test unset[r,ipa] wou set[l=de,i,ipa] taron
@@ -220,7 +220,7 @@ fwew fmetok set[i] omum unset[i] set[r,l=sv] hej
 ## REPL
 
 There is also an interactive mode, activated when no words are present in the command line arguments: 
-All flags are set to default values: -v=false -r=false -l=eng -i=false -ipa=false -p="all", unless overridden on 
+All flags are set to default values: -v=false -r=false -l=en -i=false -ipa=false -p="all", unless overridden on 
 the command line. Fwew will continuously prompt you for input.
 
 ```
@@ -238,7 +238,7 @@ Sample Output of `fwew -i -ipa`:
 [1] eltu [ˈɛl.tu] n. brain
 
 ~~> /unset ipa
-set [ i a l=eng p=all ]
+set [ i a l=en p=all ]
 
 ~~> /set l=de r
 set [ r i a l=de p=all ]
@@ -282,8 +282,8 @@ a       use affix-recognition
 i       display infix location data
 ipa     display IPA data
 l=de    use German language
-l=eng   use English language
-l=est   use Estonian language
+l=en   use English language
+l=et   use Estonian language
 l=hu    use Hungarian language
 l=nl    use Dutch language
 l=pl    use Polish language
@@ -300,23 +300,23 @@ Use `/set` with empty list of flags to show all current set flag values.
 
 ```
 ~~> /set
-set [ a l=eng p=all ]
+set [ a l=en p=all ]
 
 ~~> /set i ipa
-set [ i ipa a l=eng p=all ]
+set [ i ipa a l=en p=all ]
 
 ~~> /set
-set [ i ipa a l=eng p=all ]
+set [ i ipa a l=en p=all ]
 ```
 
 use any of these you wish to set, and separate them with spaces
 
 ```
-~~> /set ipa i l=eng p=all r
-set [ r i ipa a l=eng p=all ]
+~~> /set ipa i l=en p=all r
+set [ r i ipa a l=en p=all ]
 
 ~~> /unset i r
-set [ ipa a l=eng p=all ]
+set [ ipa a l=en p=all ]
 ```
 
 ### /list
@@ -519,14 +519,14 @@ Settings for Fwew are stored in a plain-text JSON file in the `.fwew/` directory
 
 ```JSON
 {
-    "language": "eng",
+    "language": "en",
     "posFilter": "all",
     "useAffixes": true,
     "DebugMode": false
 }
 ```
 
-The default language to use when looking up words is `"eng"` and can be changed here. This is useful for people who 
+The default language to use when looking up words is `"en"` and can be changed here. This is useful for people who 
 don't want to continuously need to type particular options all the time this, for example:
 
 ```
