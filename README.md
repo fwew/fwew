@@ -4,8 +4,7 @@
 
 The Best Na'vi Dictionary on the Command Line
 
-Fwew is written using the Go Programming Language and is a cross-platform text-based program for dictionary lookups.
-Primarily for the [Na'vi language](https://learnnavi.org). 
+Fwew is a cross-platform text-based [Na'vi](https://learnnavi.org) dictionary program written using the Go Programming Language.
 See the [LearnNavi Forum thread](https://forum.learnnavi.org/projects/fwew-a-better-crossplatform-navi-dictionary-terminal-app/).
 
 ## Install
@@ -91,32 +90,34 @@ Windows/MacOS/Linux:
 - Extract the files
 - Copy the `.fwew` folder into your user's home folder
 
-Linux/MacOS ONLY:
+Linux/macOS ONLY:
 
-- Depending on your OS, copy the `bin/linux/fwew` or `bin/mac/fwew` file to your user's home folder
+- On macOS, copy the `bin/mac/fwew` file to your user's home folder (/Users/YOUR_USERNAME_HERE)
+- On Linux, copy the `bin/linux/fwew` file to your user's home folder (/home/YOUR_USERNAME_HERE)
 - Add this text your shell config file
 (`~/.bashrc` or `~/.profile` or `~/.zshrc` or whatever):
 `export PATH=$PATH:$HOME`
 
 Windows ONLY:
 
-- Copy the `bin\windows\fwew.exe` file to your user's home folder
+- Copy the `bin\windows\fwew.exe` file to your user's home folder (C:\Users\YOUR_USERNAME_HERE)
 
 ## Uninstall
+
+- Delete the `fwew` or `fwew.exe` binary from wherever you put it or installed it to
+- Delete the `.fwew/` folder from your home folder
+  - `C:\Users\YOUR_USERNAME_HERE\.fwew` on Windows
+  - `/Users/YOUR_USERNAME_HERE/.fwew` on macOS
+  - `/home/YOUR_USERNAME_HERE/.fwew` on Linux
 
 ### Using Makefile
 
 If you're on Linux/MacOS and did `Compile and install from source code` and want to now uninstall Fwew:
 
-From Terminal where `tirea/fwew/Makefile` is, run:
+In Terminal, where `Makefile` is, run:
 ```
 make uninstall
 ```
-
-### Otherwise
-
-- Remove/delete the `fwew` or `fwew.exe` binary from wherever you put it or installed it to
-- Remove/delete the `.fwew/` folder from your home folder
 
 ## Command Line Arguments & Flags
 
@@ -177,15 +178,44 @@ fwew -l de "lì'fya"
 fwew -l=sv lì\'fya
 ```
 
-### Displaying IPA and Infix Location Data
+### Displaying IPA
 
 Use flags `-ipa` and `-i` respectively:
 
 ```
 fwew -ipa tireapängkxo
+fwew -ipa plltxe
+```
+
+### Displaying stressed syllable
+
+Use flag `-s` to show the stressed syllable with underline (Linux & macOS ONLY at this time):
+```
+fwew -s taron
+```
+
+### Displaying infix locations using classic LearnNavi angle-bracket notation
+
+Use flag `-i`:
+
+```
 fwew -i taron
-fwew -ipa -i plltxe
-fwew -i -ipa käteng
+```
+
+### Displaying infix locations using Wllìm Dot notation
+
+Use flag `-id`:
+
+```
+fwew -id kanfpìl
+```
+
+### Displaying the source of the word
+
+Use flag `-src` to show information about where the word comes from. Most often, this will show a link to the webpage or post where it was released.
+
+```
+fwew -src nìsok
 ```
 
 ### Filter Words by Part of Speech
@@ -217,20 +247,23 @@ fwew -r -ipa test unset[r,ipa] wou set[l=de,i,ipa] taron
 fwew fmetok set[i] omum unset[i] set[r,l=sv] hej
 ```
 
-## REPL
+Note: The above seems to work on all shells except `zsh`, which requires the builti-n command `noglob` command to escape the special meaning of the square brackets. To avoid always having to type `noglob fwew ...` every time, add the following line to `~/.zshrc`:
+```
+alias fwew='noglob fwew'
+```
+
+## Interactive Read-Eval-Print Loop
 
 There is also an interactive mode, activated when no words are present in the command line arguments: 
-All flags are set to default values: -v=false -r=false -l=en -i=false -ipa=false -p="all", unless overridden on 
-the command line. Fwew will continuously prompt you for input.
+All flags are set to default values, unless overridden on the command line. Fwew will continuously prompt you for input.
 
 ```
 fwew
 fwew -i -ipa
 ```
 
-setting options also works in the REPL/Interactive mode. Here however, it's a slash-command, `/set`. 
-flags to be set are separated by space. `/unset` is actually just an alias to `/set`, since what happens here is 
-options are toggled on/off. One command per line, and only the command on the line.
+setting options also works in the REPL/Interactive mode. Here however, it's a slash-command, `/set`. (see `/set & /unset` section below)
+flags to be set are separated by a single space character. Use one command per line with only the command on the line, or separate commands/unique words with a comma.
 
 Sample Output of `fwew -i -ipa`:
 ```
@@ -243,15 +276,26 @@ set [ i a l=en p=all ]
 ~~> /set l=de r
 set [ r i a l=de p=all ]
 
-~~> wald
+~~> wald, /set i ipa p=vtr., essen
 [1] na'rìng n. Wald
 
-~~> /set i ipa p=vtr.
+[2] tsawn ts<0><1><2>awn vtr. sammeln von Essen aus dem Wald, pflücken, (in der Landwirtschaft) ernten
+
 set [ r ipa a l=de p=vtr. ]
 
-~~> essen
 [1] yom [j·om] vtr. essen, speisen, fressen
 
+[2] syuve [ˈsju.vɛ] n. Nahrung, Essen (Sammelbegriff, kein Plural möglich)
+
+[3] tsyosyu [ˈt͡sjo.sju] n. Essen, Nahrung (aus Mehl)
+
+[4] vey [vɛj] n. Essen, Nahrung (von tierischem Ursprung), Fleisch
+
+[5] tìyusom [tɪ.ju.ˈsom] n. das Essen (Vorgang)
+
+[6] niktsyey [ˈnik.t͡sjɛj] n. Essenstasche, Wrap; Essen, das in essbare Blätter und Reben verpackt wurde
+
+[7] tsawn [t͡s·awn] vtr. sammeln von Essen aus dem Wald, pflücken, (in der Landwirtschaft) ernten
 ```
 
 ### /commands 
@@ -259,27 +303,32 @@ set [ r ipa a l=de p=vtr. ]
 While in interactive mode, the following commands are available and can be seen by running the `/commands` command:
 ```
 /set       show currently set options, or set given options (separated by space)
-/unset     unset given options (separated by space)
+/unset     alias of /set
+/<option>  alias of /set <option>
 /list      list all words that meet given criteria
 /random    display given number of random entries
+/lenition  show the lenition table
+/len       alias of /lenition
 /update    download and update the dictionary file
-/commands  show this commands help text
+/config    show or update the given default option in the config file
+/commands  show commands help text
 /help      show main help text
 /exit      exit/quit the program (aliases /quit /q /wc)
 ```
 
-Note that as of 3.0.0-dev, Tab-completion is possible by typing a command partially then pressing tab to complete it, 
-and additionally pressing tab as nessary to complete the command you are looking for.
+Note that as of fwew version 3.0.0-dev, Tab-completion is possible by typing a command partially then pressing tab to complete it, and additionally pressing tab as nessary to complete the command you are looking for.
+
 Note also that as of 3.0.0-dev, history is recorded each time you enter a command. Use the up and down arrows to cycle 
 through your history and reuse a previous command or modify a previous command before running again.
 
-### /set and /unset
+### /set & /unset
 
 `/set` and `/unset` allow options to be toggled or set while within `fwew`. Here are the available options:
 
 ```
 a       use affix-recognition
-i       display infix location data
+i       display infix location data using classic LearnNavi angle bracket notation
+id      display infix location data using Wllìm Dot notation
 ipa     display IPA data
 l=de    use German language
 l=en   use English language
@@ -293,7 +342,8 @@ m       format output in markdown for bold and italic (mostly only useful for fw
 n       convert numbers octal<->decimal
 p=[pos] search for word(s) with specified part of speech abbreviation
 r       reverse the lookup direction from Na'vi->local to local->Na'vi
-s       display source data
+s       display stressed syllable as underlined (macOS / Linux)
+src     display source data
 ```
 
 Use `/set` with empty list of flags to show all current set flag values.
@@ -335,8 +385,9 @@ The syntax is as follows (cond is short for condition, spec is short for specifi
 ```
 pos          part of speech of na'vi word
 word         na'vi word
-syllables    number of syllables in the na'vi word
 words        selection of na'vi words
+syllables    number of syllables in the na'vi word
+stress       number corresponding to which syllable (from left to right) is stressed
 ```
 
 `cond` depends on the `what`. Here are the conditions that apply to each `what`:
@@ -354,18 +405,18 @@ ends      word ends with the following character sequence
 has       word has the following character sequence anywhere
 like      word is like (matches) the following wildcard pattern
 ```
-syllables:
+words:
+```
+first    the first consecutive words in the datafile (chronologically oldest words) 
+last     the last consecutive words in the datafile (chronologically newest words)
+```
+syllables, stress:
 ```
 <     less than the following number
 <=    less than or equal to the following number
 =     exactly equal to the following number
 >=    greater than or equal to the following number
 >     greater than the following number
-```
-words:
-```
-first    the first consecutive words in the datafile (chronologically oldest words) 
-last     the last consecutive words in the datafile (chronologically newest words)
 ```
 
 `spec` depends on the `cond`. Here are the specifications that apply to each `cond`:
@@ -374,7 +425,7 @@ last     the last consecutive words in the datafile (chronologically newest word
 
 `<`, `<=`, `=`, `>=`, `>`, `first`, and `last` all expect a number to come next.
 
-`like` expects a character sequence, usually containing at least one wildcard asterisk, to come next. 
+`like` expects a character sequence, usually containing at least one wildcard asterisk (`*`), to come next. 
 
 #### Examples of /list
 
@@ -422,6 +473,19 @@ List a random number of nouns
 ```
 /random random where pos is n.
 ```
+
+### /lenition
+
+Running `/lenition` will show the following Na'vi Lenition table:
+```
+lenition:
+px, tx, kx → p,  t,  k
+p,  t,  k  → f,  s,  h
+        ts → s
+        '  → (disappears)
+```
+
+Note that `/en` is a shortcut alias for `/lenition` and therefore has the same effect.
 
 ### /update
 
@@ -509,19 +573,26 @@ fwew -f input.txt > output.txt
 
 ## Configuration file
 
-Settings for Fwew are stored in a plain-text JSON file in the `.fwew/` directory. The file format is essentially key-value pairs:
+Settings for Fwew are stored in a plain-text JSON file in the `.fwew/` directory, namely `.fwew/config.json`. The file format is essentially key-value pairs:
 
 ```JSON
     "key": "value",
 ```
 
 `config.json`:
-
 ```JSON
 {
     "language": "en",
     "posFilter": "all",
     "useAffixes": true,
+    "showInfixes": false,
+    "showIPA": false,
+    "showInfDots": false,
+    "showDashed": false,
+    "showSource": false,
+    "numConvert": false,
+    "markdown": false,
+    "reverse": false,
     "DebugMode": false
 }
 ```
