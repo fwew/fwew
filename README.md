@@ -1,6 +1,6 @@
 # fwew
 
-[![Build Status](https://travis-ci.com/fwew/fwew.svg?branch=master)](https://travis-ci.com/fwew/fwew) 
+[![Build Status](https://travis-ci.com/fwew/fwew.svg?branch=master)](https://travis-ci.com/fwew/fwew)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 The Best Na'vi Dictionary on the Command Line
@@ -14,7 +14,7 @@ See the [LearnNavi Forum thread](https://forum.learnnavi.org/projects/fwew-a-bet
 
 This option is mostly for Contributors and Developers. Or people who like to compile stuff themselves.
 
-You will need the [GO Programming Language](https://golang.org/) and [Git](https://git-scm.com/) installed. 
+You will need the [GO Programming Language](https://golang.org/) and [Git](https://git-scm.com/) installed.  
 If you don't have these and don't want to download/install them, skip to one of the following sections.
 
 #### Linux or macOS
@@ -48,7 +48,7 @@ cp -Recurse .\.fwew $HOME\              # copy data file folder to your user's h
 
 ### Docker
 
-If you have [Docker](https://www.docker.com) installed, you can either bulid an image using the Dockerfile in this
+If you have [Docker](https://www.docker.com) installed, you can either build an image using the Dockerfile in this
 project, or you can pull the latest pre-built one from dockerhub.
 
 #### install via building docker container from Dockerfile
@@ -69,7 +69,7 @@ Pull the container:
 docker pull tirea/fwew:latest
 ```
 
-Run the containier:
+Run the container:
 
 ```bash
 docker run -it --rm tirea/fwew
