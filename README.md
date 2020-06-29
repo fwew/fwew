@@ -152,7 +152,7 @@ fwew "tìkangkem si"
 
 Fwew parses and displays affixes used to construct the input word by default.
 
-Users familiar with the language can disable this feature and make fwew runtime faster in two ways 
+Users familiar with the language can disable this feature and make fwew runtime faster in two ways  
 (Note that this means that only root words can be searched.):
 
 Use the `-a=false` flag
@@ -225,7 +225,7 @@ fwew -src nìsok
 
 ### Filter Words by Part of Speech
 
-Use `-p` flag followed by the part of speech abbreviation as found in any Na'vi dictionary. 
+Use `-p` flag followed by the part of speech abbreviation as found in any Na'vi dictionary.  
 Most useful in `-r=true` (reverse lookup) mode to narrow down results when many are returned.
 
 ```bash
@@ -242,9 +242,9 @@ fwew -v -r word
 
 ### Set and Unset Flags
 
-You can search even quicker without re-running the program to update what information you want to see. 
-Use the set[] and unset[] keywords to update the search options. Even on the command line! To set or unset 
-multiple options at once, separate them with a comma. Language and Part of Speech Filter cannot be unset, just 
+You can search even quicker without re-running the program to update what information you want to see.  
+Use the set[] and unset[] keywords to update the search options. Even on the command line! To set or unset
+multiple options at once, separate them with a comma. Language and Part of Speech Filter cannot be unset, just
 set to another value. The default values are l=en and p=all
 
 ```bash
@@ -260,7 +260,7 @@ alias fwew='noglob fwew'
 
 ## Interactive Read-Eval-Print Loop
 
-There is also an interactive mode, activated when no words are present in the command line arguments: 
+There is also an interactive mode, activated when no words are present in the command line arguments:  
 All flags are set to default values, unless overridden on the command line. Fwew will continuously prompt you for input.
 
 ```bash
@@ -326,7 +326,7 @@ While in interactive mode, the following commands are available and can be seen 
 
 Note that as of fwew version 3.0.0-dev, Tab-completion is possible by typing a command partially then pressing tab to complete it, and additionally pressing tab as necessary to complete the command you are looking for.
 
-Note also that as of 3.0.0-dev, history is recorded each time you enter a command. Use the up and down arrows to cycle 
+Note also that as of 3.0.0-dev, history is recorded each time you enter a command. Use the up and down arrows to cycle
 through your history and reuse a previous command or modify a previous command before running again.
 
 ### /set & /unset
@@ -420,7 +420,7 @@ like      word is like (matches) the following wildcard pattern
 words:
 
 ```text
-first    the first consecutive words in the datafile (chronologically oldest words) 
+first    the first consecutive words in the datafile (chronologically oldest words)
 last     the last consecutive words in the datafile (chronologically newest words)
 ```
 
@@ -440,7 +440,7 @@ syllables, stress:
 
 `<`, `<=`, `=`, `>=`, `>`, `first`, and `last` all expect a number to come next.
 
-`like` expects a character sequence, usually containing at least one wildcard asterisk (`*`), to come next. 
+`like` expects a character sequence, usually containing at least one wildcard asterisk (`*`), to come next.
 
 #### Examples of /list
 
@@ -476,7 +476,7 @@ List the newest 25 words in the language:
 
 ### /random
 
-`/random` is a random entry generator that generates the a given number (or random number!) of random entries. 
+`/random` is a random entry generator that generates the a given number (or random number!) of random entries.
 It also features a `where` clause in which the `what cond spec` syntax from `/list` is supported to narrow down what kinds of random entries you get.
 
 #### Examples of /random
@@ -630,7 +630,7 @@ Settings for Fwew are stored in a plain-text JSON file in the `.fwew/` directory
 }
 ```
 
-The default language to use when looking up words is `"en"` and can be changed here. This is useful for people who 
+The default language to use when looking up words is `"en"` and can be changed here. This is useful for people who
 don't want to continuously need to type particular options all the time this, for example:
 
 ```bash
@@ -638,7 +638,7 @@ fwew -l de
 fwew -l=de
 ```
 
-The default part of speech filter is `"all"` and can be changed here. This is useful for people who want to repeatedly 
+The default part of speech filter is `"all"` and can be changed here. This is useful for people who want to repeatedly
 run fwew searching for words of all the same part of speech. It avoids repeatedly typing, for example:
 
 ```bash
@@ -646,7 +646,7 @@ fwew -p n.
 fwew -p vtr.
 ```
 
-If you're familiar with the language and only ever need to search root words, you can set `"useAffixes"` to `false`, 
+If you're familiar with the language and only ever need to search root words, you can set `"useAffixes"` to `false`,
 speeding up the program runtime by not trying to break down words to find results. This avoids repeatedly typing, for example:
 
 ```bash
@@ -654,8 +654,8 @@ fwew -a=false taron
 fwew -a=false
 ```
 
-The default value of DebugMode is `false` and can be changed here. DebugMode being set to `true` will cause a monstrous 
-mountain of text to flood your Terminal or Powershell on every `fwew` run. The point of it all is to see where something 
+The default value of DebugMode is `false` and can be changed here. DebugMode being set to `true` will cause a monstrous
+mountain of text to flood your Terminal or Powershell on every `fwew` run. The point of it all is to see where something
 went wrong in the logic. This option is mostly only useful to Contributors, Developers, and Users who want to report a bug.  
 The `-debug` command line flag was removed in favor of having this option in the config file.
 
@@ -664,7 +664,7 @@ or by using the `/set` command keyword as shown above.
 
 ## Saving options without editing the config file
 
-As of fwew 3.9.0-dev, support for saving options as default has been added. 
+As of fwew 3.9.0-dev, support for saving options as default has been added.
 
 ### Using command line flag
 
