@@ -252,7 +252,7 @@ fwew -r -ipa test unset[r,ipa] wou set[l=de,i,ipa] taron
 fwew fmetok set[i] omum unset[i] set[r,l=sv] hej
 ```
 
-Note: The above seems to work on all shells except `zsh`, which requires the builti-n command `noglob` command to escape the special meaning of the square brackets. To avoid always having to type `noglob fwew ...` every time, add the following line to `~/.zshrc`:
+Note: The above seems to work on all shells except `zsh`, which requires the built-in command `noglob` command to escape the special meaning of the square brackets. To avoid always having to type `noglob fwew ...` every time, add the following line to `~/.zshrc`:
 
 ```bash
 alias fwew='noglob fwew'
