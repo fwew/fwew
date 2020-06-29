@@ -1,4 +1,5 @@
 # fwew
+
 [![Build Status](https://travis-ci.com/fwew/fwew.svg?branch=master)](https://travis-ci.com/fwew/fwew) 
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
@@ -21,7 +22,7 @@ If you don't have these and don't want to download/install them, skip to one of 
 Run the following commands from inside a Terminal:
 This is made to work with GO >1.12. Since GO only supports current-2 everything <1.12 is not supported anymore.
 
-```
+```bash
 cd $HOME                                 # Start at home folder
 mkdir -p go                              # Make a folder for all Go source code
 cd go/                                   # This is where we will download the fwew source code
@@ -35,7 +36,7 @@ make install                             # to compile and install
 
 Run the following from inside a Powershell:
 
-```
+```Powershell
 cd $HOME                                # Start at home folder
 mkdir go                                # Make a folder for all Go source code
 cd go                                   # This is where we will download the fwew source code
@@ -63,23 +64,25 @@ It's as easy as 1, 2, 3 (if you have docker installed and running):
 Even easier: a minimized container of fwew is available on dockerhub:
 
 Pull the container:
-```
+
+```bash
 docker pull tirea/fwew:latest
 ```
 
 Run the containier:
-```
+
+```bash
 docker run -it --rm tirea/fwew
 ```
 
 Type `/q` to quit running the program. See the **REPL** and **/commands** sections below for more information.
 
-Command line arguments work as expected; just append your arguments to the end of the `docker run` statement above. 
-See the **Command Line Arguments & Flags** section below for more about fwew options and argumets.
+Command line arguments work as expected; just append your arguments to the end of the `docker run` statement above.  
+See the **Command Line Arguments & Flags** section below for more about fwew options and arguments.
 
 ### Install program from downloaded .zip
 
-If you don't have Go or Git or Docker installed, you don't need to. You can just download the pre-built program here 
+If you don't have Go or Git or Docker installed, you don't need to. You can just download the pre-built program here
 from GitHub in a .zip file then install and/or run it, without compiling it yourself.
 
 **Note**: these binaries are not typically kept up to date with every release.
@@ -115,7 +118,8 @@ Windows ONLY:
 If you're on Linux/MacOS and did `Compile and install from source code` and want to now uninstall Fwew:
 
 In Terminal, where `Makefile` is, run:
-```
+
+```bash
 make uninstall
 ```
 
@@ -125,21 +129,21 @@ make uninstall
 
 Run fwew with a word or list of words to look up:
 
-```
+```bash
 fwew tirea
 fwew oe tirea lu
 ```
 
 Don't forget to escape apostrophe `'` by either using `\` before each `'`, or surrounding whole word with quotes:
 
-```
+```bash
 fwew \'a\'aw
 fwew "'a'aw"
 ```
 
 Search a `"__ si"` verb by enclosing all parts of the word within quotes:
 
-```
+```bash
 fwew "eltur tìtxen si"
 fwew "tìkangkem si"
 ```
@@ -153,7 +157,7 @@ Users familiar with the language can disable this feature and make fwew runtime 
 
 Use the `-a=false` flag
 
-```
+```bash
 fwew -a=false taron
 fwew -a=false
 ```
@@ -164,7 +168,7 @@ Or set `useAffixes` to false in the config file. (See Configuration file section
 
 Run fwew with the `-r` flag to reverse the lookup direction:
 
-```
+```bash
 fwew -r test
 fwew -r=true test
 ```
@@ -173,7 +177,7 @@ fwew -r=true test
 
 Run fwew with the `-l` flag to specify the language:
 
-```
+```bash
 fwew -l de "lì'fya"
 fwew -l=sv lì\'fya
 ```
@@ -182,7 +186,7 @@ fwew -l=sv lì\'fya
 
 Use flags `-ipa` and `-i` respectively:
 
-```
+```bash
 fwew -ipa tireapängkxo
 fwew -ipa plltxe
 ```
@@ -190,7 +194,8 @@ fwew -ipa plltxe
 ### Displaying stressed syllable
 
 Use flag `-s` to show the stressed syllable with underline (Linux & macOS ONLY at this time):
-```
+
+```bash
 fwew -s taron
 ```
 
@@ -198,7 +203,7 @@ fwew -s taron
 
 Use flag `-i`:
 
-```
+```bash
 fwew -i taron
 ```
 
@@ -206,7 +211,7 @@ fwew -i taron
 
 Use flag `-id`:
 
-```
+```bash
 fwew -id kanfpìl
 ```
 
@@ -214,7 +219,7 @@ fwew -id kanfpìl
 
 Use flag `-src` to show information about where the word comes from. Most often, this will show a link to the webpage or post where it was released.
 
-```
+```bash
 fwew -src nìsok
 ```
 
@@ -223,14 +228,14 @@ fwew -src nìsok
 Use `-p` flag followed by the part of speech abbreviation as found in any Na'vi dictionary. 
 Most useful in `-r=true` (reverse lookup) mode to narrow down results when many are returned.
 
-```
+```bash
 fwew -r -p adp. in
 fwew -r -p=vtr. test
 ```
 
 ### Display Dictionary Version
 
-```
+```bash
 fwew -v
 fwew -v -r word
 ```
@@ -242,13 +247,14 @@ Use the set[] and unset[] keywords to update the search options. Even on the com
 multiple options at once, separate them with a comma. Language and Part of Speech Filter cannot be unset, just 
 set to another value. The default values are l=en and p=all
 
-```
+```bash
 fwew -r -ipa test unset[r,ipa] wou set[l=de,i,ipa] taron
 fwew fmetok set[i] omum unset[i] set[r,l=sv] hej
 ```
 
 Note: The above seems to work on all shells except `zsh`, which requires the builti-n command `noglob` command to escape the special meaning of the square brackets. To avoid always having to type `noglob fwew ...` every time, add the following line to `~/.zshrc`:
-```
+
+```bash
 alias fwew='noglob fwew'
 ```
 
@@ -257,7 +263,7 @@ alias fwew='noglob fwew'
 There is also an interactive mode, activated when no words are present in the command line arguments: 
 All flags are set to default values, unless overridden on the command line. Fwew will continuously prompt you for input.
 
-```
+```bash
 fwew
 fwew -i -ipa
 ```
@@ -266,7 +272,8 @@ setting options also works in the REPL/Interactive mode. Here however, it's a sl
 flags to be set are separated by a single space character. Use one command per line with only the command on the line, or separate commands/unique words with a comma.
 
 Sample Output of `fwew -i -ipa`:
-```
+
+```text
 ~~> eltu
 [1] eltu [ˈɛl.tu] n. brain
 
@@ -298,10 +305,11 @@ set [ r ipa a l=de p=vtr. ]
 [7] tsawn [t͡s·awn] vtr. sammeln von Essen aus dem Wald, pflücken, (in der Landwirtschaft) ernten
 ```
 
-### /commands 
+### /commands
 
 While in interactive mode, the following commands are available and can be seen by running the `/commands` command:
-```
+
+```text
 /set       show currently set options, or set given options (separated by space)
 /unset     alias of /set
 /<option>  alias of /set <option>
@@ -316,7 +324,7 @@ While in interactive mode, the following commands are available and can be seen 
 /exit      exit/quit the program (aliases /quit /q /wc)
 ```
 
-Note that as of fwew version 3.0.0-dev, Tab-completion is possible by typing a command partially then pressing tab to complete it, and additionally pressing tab as nessary to complete the command you are looking for.
+Note that as of fwew version 3.0.0-dev, Tab-completion is possible by typing a command partially then pressing tab to complete it, and additionally pressing tab as necessary to complete the command you are looking for.
 
 Note also that as of 3.0.0-dev, history is recorded each time you enter a command. Use the up and down arrows to cycle 
 through your history and reuse a previous command or modify a previous command before running again.
@@ -325,7 +333,7 @@ through your history and reuse a previous command or modify a previous command b
 
 `/set` and `/unset` allow options to be toggled or set while within `fwew`. Here are the available options:
 
-```
+```text
 a       use affix-recognition
 i       display infix location data using classic LearnNavi angle bracket notation
 id      display infix location data using Wllìm Dot notation
@@ -348,7 +356,7 @@ src     display source data
 
 Use `/set` with empty list of flags to show all current set flag values.
 
-```
+```text
 ~~> /set
 set [ a l=en p=all ]
 
@@ -361,7 +369,7 @@ set [ i ipa a l=en p=all ]
 
 use any of these you wish to set, and separate them with spaces
 
-```
+```text
 ~~> /set ipa i l=en p=all r
 set [ r i ipa a l=en p=all ]
 
@@ -375,14 +383,14 @@ set [ ipa a l=en p=all ]
 
 The syntax is as follows (cond is short for condition, spec is short for specification):
 
-```
+```text
 /list what cond spec
 /lits what cond spec and what cond spec [and what cond spec...]
 ```
 
 `what` can be any one of the following:
 
-```
+```text
 pos          part of speech of na'vi word
 word         na'vi word
 words        selection of na'vi words
@@ -393,25 +401,32 @@ stress       number corresponding to which syllable (from left to right) is stre
 `cond` depends on the `what`. Here are the conditions that apply to each `what`:
 
 pos:
-```
+
+```text
 has    part of speech has the following character sequence anywhere
 is     part of speech is exactly the following character sequence
 like   part of speech is like (matches) the following wildcard pattern
 ```
+
 word:
-```
+
+```text
 starts    word starts with the following character sequence
 ends      word ends with the following character sequence
 has       word has the following character sequence anywhere
 like      word is like (matches) the following wildcard pattern
 ```
+
 words:
-```
+
+```text
 first    the first consecutive words in the datafile (chronologically oldest words) 
 last     the last consecutive words in the datafile (chronologically newest words)
 ```
+
 syllables, stress:
-```
+
+```text
 <     less than the following number
 <=    less than or equal to the following number
 =     exactly equal to the following number
@@ -430,23 +445,32 @@ syllables, stress:
 #### Examples of /list
 
 List all modal verbs:
-```
+
+```text
 /list pos has v and pos has m.
 ```
+
 List all stative verbs:
-```
+
+```text
 /list pos has svin.
 ```
+
 List all nouns that start with tì:
-```
+
+```text
 /list word starts tì and pos is n.
 ```
+
 List all 3 syllable transitive verbs:
-```
+
+```text
 /list syllables = 3 and pos has vtr.
 ```
+
 List the newest 25 words in the language:
-```
+
+```text
 /list words last 25
 ```
 
@@ -458,26 +482,34 @@ It also features a `where` clause in which the `what cond spec` syntax from `/li
 #### Examples of /random
 
 List 10 random entires
-```
+
+```text
 /random 10
 ```
+
 List 5 random transitive verbs
-```
+
+```text
 /random 5 where pos has vtr
 ```
+
 List a random number of random words
-```
+
+```text
 /random random
-```
+
+```text
 List a random number of nouns
-```
+
+```text
 /random random where pos is n.
 ```
 
 ### /lenition
 
 Running `/lenition` will show the following Na'vi Lenition table:
-```
+
+```text
 lenition:
 px, tx, kx → p,  t,  k
 p,  t,  k  → f,  s,  h
@@ -506,7 +538,7 @@ You can make a text file containing all the words you want to search and all the
 
 input.txt:
 
-```
+```text
 eltu
 /set r p=adp.
 on
@@ -525,13 +557,13 @@ inan
 
 pass this file to fwew:
 
-```
+```bash
 fwew -f input.txt
 ```
 
 Fwew output:
 
-```
+```text
 cmd eltu
 [1] eltu n. brain
 
@@ -567,7 +599,7 @@ cmd /unset i ipa
 
 You can also direct the output of Fwew into a new text file.
 
-```
+```bash
 fwew -f input.txt > output.txt
 ```
 
@@ -580,6 +612,7 @@ Settings for Fwew are stored in a plain-text JSON file in the `.fwew/` directory
 ```
 
 `config.json`:
+
 ```JSON
 {
     "language": "en",
@@ -600,7 +633,7 @@ Settings for Fwew are stored in a plain-text JSON file in the `.fwew/` directory
 The default language to use when looking up words is `"en"` and can be changed here. This is useful for people who 
 don't want to continuously need to type particular options all the time this, for example:
 
-```
+```bash
 fwew -l de
 fwew -l=de
 ```
@@ -608,7 +641,7 @@ fwew -l=de
 The default part of speech filter is `"all"` and can be changed here. This is useful for people who want to repeatedly 
 run fwew searching for words of all the same part of speech. It avoids repeatedly typing, for example:
 
-```
+```bash
 fwew -p n.
 fwew -p vtr.
 ```
@@ -616,14 +649,14 @@ fwew -p vtr.
 If you're familiar with the language and only ever need to search root words, you can set `"useAffixes"` to `false`, 
 speeding up the program runtime by not trying to break down words to find results. This avoids repeatedly typing, for example:
 
-```
+```bash
 fwew -a=false taron
 fwew -a=false
 ```
 
 The default value of DebugMode is `false` and can be changed here. DebugMode being set to `true` will cause a monstrous 
 mountain of text to flood your Terminal or Powershell on every `fwew` run. The point of it all is to see where something 
-went wrong in the logic. This option is mostly only useful to Contributors, Developers, and Users who want to report a bug. 
+went wrong in the logic. This option is mostly only useful to Contributors, Developers, and Users who want to report a bug.  
 The `-debug` command line flag was removed in favor of having this option in the config file.
 
 If you edit the config file to set your own defaults, you can override the config file settings using command line flags
@@ -635,55 +668,68 @@ As of fwew 3.9.0-dev, support for saving options as default has been added.
 
 ### Using command line flag
 
-```
+```bash
 fwew -c <key>=<value>
 ```
+
 or
-```
+
+```bash
 fwew -c "<key>=<value>"
 ```
 
 For example, to quickly run fwew for the sole sake of updating the default language to Dutch:
 
-```
+```bash
 fwew -c language=nl
 ```
+
 or
-```
+
+```bash
 fwew -c "language nl"
 ```
 
 ### Using /config
 
 See what default values are set in the config file
-```
+
+```text
 ~~> /config
 ```
 
 Set the default value of `key` to `value`
-```
+
+```text
 ~~> /config key value
 ```
+
 or
-```
+
+```text
 ~~> /config key=value
 ```
 
 For example set the default behavior of fwew to not check for affixes
-```
+
+```text
 ~~> /config useAffixes false
 ```
+
 or
-```
+
+```text
 ~~> /config useAffixes=false
 ```
 
 As always, slash-commands are all usable from the command line as well, so the following is also possible:
 
-```
+```bash
 fwew "/config key value"
 ```
+
 or
-```
+
+```bash
 fwew "/config key=value"
 ```
