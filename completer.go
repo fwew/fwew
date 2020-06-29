@@ -24,8 +24,8 @@ import (
 )
 
 func executor(cmds string) {
-	csvCmds := strings.Split(cmds, ",")
-	for _, cmd := range csvCmds {
+	commands := strings.Split(cmds, ",")
+	for _, cmd := range commands {
 		cmd = strings.Trim(cmd, " ")
 		if cmd != "" {
 			if strings.HasPrefix(cmd, "/") {
@@ -45,7 +45,7 @@ func executor(cmds string) {
 					}
 				}
 			}
-		} else if len(csvCmds) == 1 {
+		} else if len(commands) == 1 {
 			fmt.Println("")
 		}
 	}

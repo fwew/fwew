@@ -183,12 +183,12 @@ func WriteConfig(entry string) Config {
 		}
 
 		// convert Config struct to JSON
-		jconf, err := json.Marshal(config)
+		configJSON, err := json.Marshal(config)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		e := ioutil.WriteFile(Text("config"), jconf, 0644)
+		e := ioutil.WriteFile(Text("config"), configJSON, 0644)
 		if e != nil {
 			log.Fatal(e)
 		}

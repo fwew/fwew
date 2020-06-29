@@ -164,7 +164,7 @@ func slashCommand(s string, argsMode bool) {
 		sc      []string
 		command string
 		args    []string
-		nargs   int
+		numArgs int
 		setArg  string
 		confArg string
 		k       int
@@ -176,7 +176,7 @@ func slashCommand(s string, argsMode bool) {
 	command = sc[0]
 	if len(sc) > 1 {
 		args = sc[1:]
-		nargs = len(args)
+		numArgs = len(args)
 	}
 	switch command {
 	case "/help":
@@ -193,7 +193,7 @@ func slashCommand(s string, argsMode bool) {
 				setArg += string(c)
 			}
 		}
-		if nargs > 0 {
+		if numArgs > 0 {
 			setArg += space
 		}
 		setArg += strings.Join(args, space)
@@ -205,14 +205,14 @@ func slashCommand(s string, argsMode bool) {
 		}
 		output(words)
 	case "/random":
-		if nargs > 0 {
+		if numArgs > 0 {
 			// get number of random words requested
 			k, err = strconv.Atoi(args[0])
 			if err != nil {
 				fmt.Println(Text("invalidNumericError") + "\n")
 			} else {
 				// get filter arguments
-				if nargs >= 5 && args[1] == "where" {
+				if numArgs >= 5 && args[1] == "where" {
 					args = args[2:]
 				} else {
 					args = []string{}
