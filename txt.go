@@ -141,6 +141,7 @@ func init() {
 	texts["wordsDesc"] = texts["w_words"]
 	texts["syllablesDesc"] = texts["w_syllables"]
 	texts["stressDesc"] = "stressed syllable"
+	texts["lengthDesc"] = "length of the word (in phonemes)"
 	texts["randomDesc"] = "random number"
 	texts["whereDesc"] = "add condition to random"
 	texts["startsDesc"] = "field starts with"
