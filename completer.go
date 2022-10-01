@@ -97,6 +97,7 @@ func completer(d prompt.Document) []prompt.Suggest {
 		{Text: "l=pl", Description: Text("l=plDesc")},
 		{Text: "l=ru", Description: Text("l=ruDesc")},
 		{Text: "l=sv", Description: Text("l=svDesc")},
+		{Text: "l=tr", Description: Text("l=trDesc")},
 		{Text: "pos", Description: Text("posDesc")},
 		{Text: "word", Description: Text("wordDesc")},
 		{Text: "words", Description: Text("wordsDesc")},
