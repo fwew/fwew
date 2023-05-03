@@ -8,6 +8,10 @@ github.com/fwew/fwew-lib/v5 v5.6.2-dev.0.20221121015901-5d8f8103dad7 h1:ymNK9RLm
 github.com/fwew/fwew-lib/v5 v5.6.2-dev.0.20221121015901-5d8f8103dad7/go.mod h1:dALuU7if8kRp0+YtYAohr402EhMIvrJb+awq98zNPF0=
 github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20230428034020-b930f683d584 h1:hcGNWTng6GCNpQdGPVelno4uVunuBPjXwGhtCMU4mZY=
 github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20230428034020-b930f683d584/go.mod h1:dALuU7if8kRp0+YtYAohr402EhMIvrJb+awq98zNPF0=
+github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20230501054403-ca725f9652a9 h1:q+AP9P101QTS4GYVVE5C0Mc/ckWAqSChrQYqYYkksXg=
+github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20230501054403-ca725f9652a9/go.mod h1:dALuU7if8kRp0+YtYAohr402EhMIvrJb+awq98zNPF0=
+github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20230503002433-2897736068dc h1:tvpypfKxDSh7vavnWsBPNT+GngNQ68GaOmXDM9+1sKU=
+github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20230503002433-2897736068dc/go.mod h1:dALuU7if8kRp0+YtYAohr402EhMIvrJb+awq98zNPF0=
 github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0/go.mod h1:E/TSTwGwJL78qG/PmXZO1EjYhfJinVAhrmmHX6Z8B9k=
 github.com/jung-kurt/gofpdf v1.0.3-0.20190309125859-24315acbbda5/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
 github.com/mattn/go-colorable v0.1.4 h1:snbPLB8fVfU9iwbbo30TPtbLRzwWu6aJS6Xh4eaaviA=
