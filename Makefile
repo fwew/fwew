@@ -10,18 +10,24 @@ CP = cp
 RM = rm
 BINDEST = /data/data/com.termux/files/usr/bin
 endif
+WGET := $(shell command -v wget 2> /dev/null)
+CURL := $(shell command -v curl 2> /dev/null)
+DOWNLOAD := $(if $(WGET),wget,$(if $(CURL),curl,echo "Error: wget or curl not found"; exit 1;))
 
 fwew: format compile
 
 all: test docker cross-compile
 
+download:
+	$(DOWNLOAD) -O .fwew/dictionary-v2.txt https://tirea.learnnavi.org/dictionarydata/dictionary-v2.txt
+
 format:
 	gofmt -w $(SOURCES)
 
-compile:
+compile: download
 	go build -o bin/fwew ./...
 
-cross-compile:
+cross-compile: download
 	GOOS=darwin go build -o bin/mac/fwew ./...
 	GOOS=linux go build -o bin/linux/fwew ./...
 	GOOS=windows go build -o bin/windows/fwew.exe ./...
@@ -29,7 +35,7 @@ cross-compile:
 test: install
 	go test -v -cover
 
-docker:
+docker: download
 	docker build -t tirea/fwew:$(TAG) .
 	docker run -it --rm tirea/fwew:$(TAG) -v -r test
 
