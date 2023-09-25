@@ -69,6 +69,8 @@ func setFlags(arg string, argsMode bool) {
 			*showInfDots = !*showInfDots
 		case f == "s":
 			*showDashed = !*showDashed
+		case f == "skip":
+			*skipFixes = !*skipFixes
 		case f == "src":
 			*showSource = !*showSource
 		case f == "a":
