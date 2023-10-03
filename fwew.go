@@ -260,6 +260,8 @@ func main() {
 		argsMode bool
 		fileMode bool
 	)
+	fwew.StartEverything()
+
 	configuration = ReadConfig()
 	// Version flag, for displaying version data
 	showVersion = flag.Bool("v", false, Text("usageV"))
