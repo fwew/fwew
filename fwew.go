@@ -149,13 +149,15 @@ func printHelp() {
 	flag.Usage()
 }
 
-func output(words []fwew.Word) {
-	for i, w := range words {
-		entry, err := w.ToOutputLine(i, *markdown, *showIPA, *showInfixes, *showDashed, *showInfDots, *showSource, *language)
-		if err != nil {
-			panic(err)
+func output(words [][]fwew.Word) {
+	for _, wordbundle := range words {
+		for j, word := range wordbundle {
+			entry, err := word.ToOutputLine(j, *markdown, *showIPA, *showInfixes, *showDashed, *showInfDots, *showSource, *language)
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println(entry)
 		}
-		fmt.Println(entry)
 	}
 	if len(words) == 0 {
 		fmt.Println(Text("none"))
@@ -206,7 +208,7 @@ func slashCommand(s string, argsMode bool) {
 		if err != nil {
 			panic(err)
 		}
-		output(words)
+		output([][]fwew.Word{words})
 	case "/random":
 		if numArgs > 0 {
 			// get number of random words requested
@@ -224,7 +226,7 @@ func slashCommand(s string, argsMode bool) {
 				if err != nil {
 					panic(err)
 				}
-				output(words)
+				output([][]fwew.Word{words})
 			}
 		} else {
 			fmt.Println()
