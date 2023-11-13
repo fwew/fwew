@@ -4,7 +4,7 @@
 // 	(at your option) any later version.
 //
 //	Fwew is distributed in the hope that it will be useful,
-//	but WITHOUT ANY WARRANTY; without even implied warranty of
+//	but WITHOUT ANY WARRANTY; without gen implied warranty of
 //	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //	GNU General Public License for more details.
 //
@@ -33,14 +33,15 @@ const (
 
 // global flags & options
 var (
-	configuration            Config
-	configure, filename      *string
-	language, posFilter      *string
-	showInfixes, showIPA     *bool
-	showInfDots, showDashed  *bool
-	showVersion, showSource  *bool
-	useAffixes, numConvert   *bool
-	markdown, debug, reverse *bool
+	configuration           Config
+	configure, filename     *string
+	language, posFilter     *string
+	showInfixes, showIPA    *bool
+	skipFixes, showInfDots  *bool
+	showDashed, showVersion *bool
+	showSource, useAffixes  *bool
+	numConvert, markdown    *bool
+	debug, reverse          *bool
 )
 
 func setFlags(arg string, argsMode bool) {
@@ -68,6 +69,8 @@ func setFlags(arg string, argsMode bool) {
 			*showInfDots = !*showInfDots
 		case f == "s":
 			*showDashed = !*showDashed
+		case f == "skip":
+			*skipFixes = !*skipFixes
 		case f == "src":
 			*showSource = !*showSource
 		case f == "a":
@@ -270,6 +273,8 @@ func main() {
 	showInfDots = flag.Bool("id", configuration.ShowInfDots, Text("usageID"))
 	// IPA flag, opt to show IPA data
 	showIPA = flag.Bool("ipa", configuration.ShowIPA, Text("usageIPA"))
+	// Show syllable breakdown / stress
+	skipFixes = flag.Bool("skip", configuration.ShowIPA, Text("usageSkip"))
 	// Show syllable breakdown / stress
 	showDashed = flag.Bool("s", configuration.ShowDashed, Text("usageS"))
 	// Source flag, opt to show source data

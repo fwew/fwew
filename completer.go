@@ -37,7 +37,7 @@ func executor(cmds string) {
 					if *reverse {
 						output(fwew.TranslateToNavi(cmd, *language))
 					} else {
-						navi, err := fwew.TranslateFromNavi(cmd)
+						navi, err := fwew.TranslateFromNavi(cmd, !*skipFixes)
 						if err != nil {
 							panic(err)
 						}

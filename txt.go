@@ -229,6 +229,7 @@ func init() {
 	texts["usageID"] = "display infix location data in dot notation"
 	texts["usageIPA"] = "display IPA data"
 	texts["usageS"] = "display syllable/stress breakdown"
+	texts["usageSkip"] = "skip checking for prefixes, suffixes and infixes"
 	texts["usageSrc"] = "display source data"
 	texts["usageP"] = "search for word(s) with specified part of speech\n"
 	texts["usageR"] = "reverse the lookup direction from Na'vi->local to local->Na'vi"
