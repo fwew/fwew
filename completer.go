@@ -35,9 +35,9 @@ func executor(cmds string) {
 					fmt.Println(Convert(cmd, *reverse))
 				} else {
 					if *reverse {
-						output(fwew.TranslateToNavi(cmd, *language))
+						output(fwew.TranslateToNaviHash(cmd, *language))
 					} else {
-						navi, err := fwew.TranslateFromNavi(cmd, !*skipFixes)
+						navi, err := fwew.TranslateFromNaviHash(cmd, !*skipFixes)
 						if err != nil {
 							panic(err)
 						}
