@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/c-bata/go-prompt v0.2.3
-	github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20230704190850-db70d4bd3a5e
+	github.com/fwew/fwew-lib/v5 v5.7.1-dev.0.20231215061223-07bc3664c516
 )
 
 require (
