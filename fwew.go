@@ -212,7 +212,7 @@ func slashCommand(s string, argsMode bool) {
 		setArg += strings.Join(args, space)
 		setFlags(setArg, argsMode)
 	case "/list":
-		words, err := fwew.List(args)
+		words, err := fwew.List(args, 1)
 		if err != nil {
 			panic(err)
 		}
@@ -230,7 +230,7 @@ func slashCommand(s string, argsMode bool) {
 				} else {
 					args = []string{}
 				}
-				words, err = fwew.Random(k, args)
+				words, err = fwew.Random(k, args, 1)
 				if err != nil {
 					panic(err)
 				}
