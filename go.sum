@@ -1,7 +1,7 @@
 github.com/c-bata/go-prompt v0.2.6 h1:POP+nrHE+DfLYx370bedwNhsqmpCUynWPxuHi0C5vZI=
 github.com/c-bata/go-prompt v0.2.6/go.mod h1:/LMAke8wD2FsNu9EXNdHxNLbd9MedkPnCdfpU9wwHfY=
-github.com/fwew/fwew-lib/v5 v5.11.11-0.20240421054159-8bd5d25475c5 h1:2lAfxSVWLvQVIWtF3742KkYjxFJR0EuCVFx40jQ9meM=
-github.com/fwew/fwew-lib/v5 v5.11.11-0.20240421054159-8bd5d25475c5/go.mod h1:QHtBMZloJE+sVrdpWQgdAS8qgNDJ/2Rx5gXbHw+qSm4=
+github.com/fwew/fwew-lib/v5 v5.12.0 h1:ixWi2L7GTqnmLlkLfhZ/KZNEmZ/24dhkM7jvP904pAs=
+github.com/fwew/fwew-lib/v5 v5.12.0/go.mod h1:QHtBMZloJE+sVrdpWQgdAS8qgNDJ/2Rx5gXbHw+qSm4=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
 github.com/mattn/go-colorable v0.1.7/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
