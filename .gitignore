@@ -8,4 +8,4 @@ output*.txt
 .vscode
 .fwew/dictionary.txt
 .fwew/dictionary-v2.txt
-
+.env
