@@ -1,4 +1,4 @@
-FROM golang:alpine as builder
+FROM golang:alpine AS builder
 
 RUN mkdir /user && \
     echo 'user:x:504:504:user:/home/user:' > /user/passwd && \
