@@ -1,10 +1,12 @@
 module fwew
 
-go 1.20
+go 1.22
+
+toolchain go1.22.4
 
 require (
 	github.com/c-bata/go-prompt v0.2.6
-	github.com/fwew/fwew-lib/v5 v5.17.1
+	github.com/fwew/fwew-lib/v5 v5.18.0
 )
 
 require (
