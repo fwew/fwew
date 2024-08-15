@@ -53,4 +53,5 @@ uninstall:
 	rm -rf ~/.fwew
 
 clean:
-	rm -f bin/fwew
+	rm -f bin/*
+
