@@ -18,8 +18,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"strings"
 )
 
@@ -39,16 +39,50 @@ type Config struct {
 	DebugMode   bool   `json:"DebugMode"`
 }
 
+func InitConfig() (Config, error) {
+	defaultConfig := Config{
+		Language:    "en",
+		PosFilter:   "all",
+		UseAffixes:  true,
+		ShowInfixes: false,
+		ShowIPA:     false,
+		ShowInfDots: false,
+		ShowDashed:  false,
+		ShowSource:  false,
+		NumConvert:  false,
+		Markdown:    false,
+		Reverse:     false,
+		DebugMode:   false,
+	}
+
+	configJSON, err := json.Marshal(defaultConfig)
+	if err != nil {
+		return defaultConfig, err
+	}
+
+	err = os.WriteFile(Text("config"), configJSON, 0644)
+	if err != nil {
+		return defaultConfig, err
+	}
+
+	fmt.Println(Text("configSaved"))
+
+	return defaultConfig, nil
+}
+
 // ReadConfig reads a configuration file and puts the data into Config struct
 func ReadConfig() Config {
-	configFile, e := ioutil.ReadFile(Text("config"))
+	var config Config
+	var err error
+
+	configFile, e := os.ReadFile(Text("config"))
 	if e != nil {
+		config, err = InitConfig()
 		fmt.Println(Text("fileError"))
 		log.Fatal(e)
 	}
 
-	var config Config
-	err := json.Unmarshal(configFile, &config)
+	err = json.Unmarshal(configFile, &config)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -188,7 +222,7 @@ func WriteConfig(entry string) Config {
 			log.Fatal(err)
 		}
 
-		e := ioutil.WriteFile(Text("config"), configJSON, 0644)
+		e := os.WriteFile(Text("config"), configJSON, 0644)
 		if e != nil {
 			log.Fatal(e)
 		}
