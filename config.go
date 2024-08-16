@@ -60,6 +60,7 @@ func InitConfig() (Config, error) {
 		return defaultConfig, err
 	}
 
+	err = os.Mkdir(Text("dataDir"), 0755)
 	err = os.WriteFile(Text("config"), configJSON, 0644)
 	if err != nil {
 		return defaultConfig, err
@@ -75,15 +76,14 @@ func ReadConfig() Config {
 	var config Config
 	var err error
 
-	configFile, e := os.ReadFile(Text("config"))
-	if e != nil {
-		config, err = InitConfig()
-		fmt.Println(Text("fileError"))
-		log.Fatal(e)
-	}
-
+	configFile, err := os.ReadFile(Text("config"))
 	err = json.Unmarshal(configFile, &config)
 	if err != nil {
+		config, err = InitConfig()
+	}
+
+	if err != nil {
+		fmt.Println(Text("fileError"))
 		log.Fatal(err)
 	}
 
