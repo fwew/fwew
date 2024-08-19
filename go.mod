@@ -1,4 +1,4 @@
-module fwew
+module github.com/fwew/fwew/v5
 
 go 1.22
 
