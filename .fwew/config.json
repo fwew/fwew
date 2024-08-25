@@ -10,5 +10,6 @@
     "numConvert": false,
     "markdown": false,
     "reverse": false,
-    "DebugMode": false
+    "debugMode": false,
+    "reefDialect": false
 }

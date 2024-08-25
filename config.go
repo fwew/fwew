@@ -36,7 +36,8 @@ type Config struct {
 	NumConvert  bool   `json:"numConvert"`
 	Markdown    bool   `json:"markdown"`
 	Reverse     bool   `json:"reverse"`
-	DebugMode   bool   `json:"DebugMode"`
+	DebugMode   bool   `json:"debugMode"`
+	ReefDialect bool   `json:"reefDialect"`
 }
 
 func InitConfig() (Config, error) {
@@ -53,6 +54,7 @@ func InitConfig() (Config, error) {
 		Markdown:    false,
 		Reverse:     false,
 		DebugMode:   false,
+		ReefDialect: false,
 	}
 
 	configJSON, err := json.Marshal(defaultConfig)
@@ -202,6 +204,15 @@ func WriteConfig(entry string) Config {
 				fmt.Printf("%s %s: %s\n\n", Text("configValueError"), key, value)
 				return config
 			}
+		case "reef":
+			if value == strTrue {
+				config.ReefDialect = true
+			} else if value == strFalse {
+				config.ReefDialect = false
+			} else {
+				fmt.Printf("%s %s: %s\n\n", Text("configValueError"), key, value)
+				return config
+			}
 		case "debugmode":
 			if value == strTrue {
 				config.DebugMode = true
@@ -238,18 +249,19 @@ func WriteConfig(entry string) Config {
 
 func (c Config) String() string {
 	var str string
+	str += fmt.Sprintf("DebugMode: %t\n", c.DebugMode)
 	str += fmt.Sprintf("Language: %s\n", c.Language)
+	str += fmt.Sprintf("Markdown: %t\n", c.Markdown)
+	str += fmt.Sprintf("NumConvert: %t\n", c.NumConvert)
 	str += fmt.Sprintf("PosFilter: %s\n", c.PosFilter)
-	str += fmt.Sprintf("UseAffixes: %t\n", c.UseAffixes)
+	str += fmt.Sprintf("ReefDialect: %t\n", c.ReefDialect)
+	str += fmt.Sprintf("Reverse: %t\n", c.Reverse)
+	str += fmt.Sprintf("ShowDashed: %t\n", c.ShowDashed)
+	str += fmt.Sprintf("ShowInfDots: %t\n", c.ShowInfDots)
 	str += fmt.Sprintf("ShowInfixes: %t\n", c.ShowInfixes)
 	str += fmt.Sprintf("ShowIPA: %t\n", c.ShowIPA)
-	str += fmt.Sprintf("ShowInfDots: %t\n", c.ShowInfDots)
-	str += fmt.Sprintf("ShowDashed: %t\n", c.ShowDashed)
 	str += fmt.Sprintf("ShowSource: %t\n", c.ShowSource)
-	str += fmt.Sprintf("NumConvert: %t\n", c.NumConvert)
-	str += fmt.Sprintf("Markdown: %t\n", c.Markdown)
-	str += fmt.Sprintf("Reverse: %t\n", c.Reverse)
-	str += fmt.Sprintf("DebugMode: %t\n", c.DebugMode)
+	str += fmt.Sprintf("UseAffixes: %t\n", c.UseAffixes)
 	// this string only doesn't get translated or called from Text() because they're var names
 	return str
 }

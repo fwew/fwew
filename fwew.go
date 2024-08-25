@@ -41,7 +41,7 @@ var (
 	showDashed, showVersion *bool
 	showSource, useAffixes  *bool
 	numConvert, markdown    *bool
-	debug, reverse          *bool
+	debug, reverse, reef    *bool
 )
 
 func setFlags(arg string, argsMode bool) {
@@ -61,6 +61,8 @@ func setFlags(arg string, argsMode bool) {
 		case f == "":
 		case f == "r":
 			*reverse = !*reverse
+		case f == "reef":
+			*reef = !*reef
 		case f == "i":
 			*showInfixes = !*showInfixes
 		case f == "ipa":
@@ -101,6 +103,9 @@ func setFlags(arg string, argsMode bool) {
 		var out string
 		out += Text("set") + space
 		out += "[ "
+		if *reef {
+			out += "reef "
+		}
 		if *reverse {
 			out += "r "
 		}
@@ -159,7 +164,7 @@ func output(words [][]fwew.Word) {
 			if word.ID == "" && fileMode {
 				fmt.Printf("cmd %s\n", word.Navi)
 			} else {
-				entry, err := word.ToOutputLine(fmt.Sprint(j), *markdown, *showIPA, *showInfixes, *showDashed, *showInfDots, *showSource, *language)
+				entry, err := word.ToOutputLine(fmt.Sprint(j), *markdown, *showIPA, *showInfixes, *showDashed, *showInfDots, *showSource, *reef, *language)
 				if err != nil {
 					panic(err)
 				}
@@ -277,6 +282,8 @@ func main() {
 	showVersion = flag.Bool("v", false, Text("usageV"))
 	// Reverse direction flag, for local_lang -> Na'vi lookups
 	reverse = flag.Bool("r", configuration.Reverse, Text("usageR"))
+	// Reef dialect flag, set true for reef dialect false for forest
+	reef = flag.Bool("reef", configuration.ReefDialect, Text("usageReef"))
 	// Language specifier flag
 	language = flag.String("l", configuration.Language, Text("usageL"))
 	// Infixes flag, opt to show infix location data
@@ -322,10 +329,6 @@ func main() {
 	}
 
 	if fileMode { // FILE MODE
-		if *markdown {
-			// restrict Discord users to cwd
-			*filename = "./" + *filename
-		}
 		inFile, err := os.Open(*filename)
 		if err != nil {
 			fmt.Printf("%s (%s)\n", Text("noFileError"), *filename)

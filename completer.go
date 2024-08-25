@@ -71,6 +71,7 @@ func completer(d prompt.Document) []prompt.Suggest {
 		{Text: "/quit", Description: Text("/exitDesc")},
 		{Text: "/q", Description: Text("/exitDesc")},
 		{Text: "/r", Description: Text("usageR")},
+		{Text: "/reef", Description: Text("usageReef")},
 		{Text: "/id", Description: Text("usageID")},
 		{Text: "/i", Description: Text("usageI")},
 		{Text: "/ipa", Description: Text("usageIPA")},

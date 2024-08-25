@@ -235,6 +235,7 @@ func init() {
 	texts["usageSrc"] = "display source data"
 	texts["usageP"] = "search for word(s) with specified part of speech\n"
 	texts["usageR"] = "reverse the lookup direction from Na'vi->local to local->Na'vi"
+	texts["usageReef"] = "set true to use Reef dialect (default false for Forest dialect)"
 	texts["usageA"] = "find all matches by using affixes to match the input word"
 	texts["usageN"] = "convert numbers octal<->decimal"
 	texts["usageM"] = "format output in markdown for bold and italic\n(mostly useful for fwew-discord bot)"
