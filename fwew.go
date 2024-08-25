@@ -205,7 +205,7 @@ func slashCommand(s string, argsMode bool) {
 		setArg = strings.Join(args, space)
 		setFlags(setArg, argsMode)
 	// aliases for /set
-	case "/a", "/id", "/s", "/i", "/ipa", "/l", "/n", "/p", "/r", "/src":
+	case "/l", "/p", "/a", "/i", "/ipa", "/id", "/s", "/src", "/n", "/m", "/r", "/d", "/reef":
 		for _, c := range command {
 			if c != '/' {
 				setArg += string(c)

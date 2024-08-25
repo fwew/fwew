@@ -25,19 +25,19 @@ import (
 
 // Config is a struct designed to hold the values of the configuration file when loaded
 type Config struct {
-	Language    string `json:"language"`
-	PosFilter   string `json:"posFilter"`
-	UseAffixes  bool   `json:"useAffixes"`
-	ShowInfixes bool   `json:"showInfixes"`
-	ShowIPA     bool   `json:"showIPA"`
-	ShowInfDots bool   `json:"showInfDots"`
-	ShowDashed  bool   `json:"showDashed"`
-	ShowSource  bool   `json:"showSource"`
-	NumConvert  bool   `json:"numConvert"`
-	Markdown    bool   `json:"markdown"`
-	Reverse     bool   `json:"reverse"`
-	DebugMode   bool   `json:"debugMode"`
-	ReefDialect bool   `json:"reefDialect"`
+	Language    string `json:"language"`    // -l <lc>
+	PosFilter   string `json:"posFilter"`   // -p <pos>
+	UseAffixes  bool   `json:"useAffixes"`  // -a
+	ShowInfixes bool   `json:"showInfixes"` // -i
+	ShowIPA     bool   `json:"showIPA"`     // -ipa
+	ShowInfDots bool   `json:"showInfDots"` // -id
+	ShowDashed  bool   `json:"showDashed"`  // -s
+	ShowSource  bool   `json:"showSource"`  // -src
+	NumConvert  bool   `json:"numConvert"`  // -n
+	Markdown    bool   `json:"markdown"`    // -m
+	Reverse     bool   `json:"reverse"`     // -r
+	DebugMode   bool   `json:"debugMode"`   // -d
+	ReefDialect bool   `json:"reefDialect"` // -reef
 }
 
 func InitConfig() (Config, error) {
@@ -204,7 +204,7 @@ func WriteConfig(entry string) Config {
 				fmt.Printf("%s %s: %s\n\n", Text("configValueError"), key, value)
 				return config
 			}
-		case "reef":
+		case "reefdialect":
 			if value == strTrue {
 				config.ReefDialect = true
 			} else if value == strFalse {

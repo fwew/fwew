@@ -163,6 +163,7 @@ func init() {
 	texts["posFilterDesc"] = "update config file: set part of speech filter"
 	texts["useAffixesDesc"] = "update config file: toggle affix parsing true/false"
 	texts["debugModeDesc"] = "update config file: toggle debug mode true/false"
+	texts["reefDialectDesc"] = "update config file: toggle Reef Dialect mode true/false"
 	texts["allDesc"] = "update config file: set part of speech filter to show all"
 	texts["trueDesc"] = "update config file: set value to true"
 	texts["falseDesc"] = "update config file: set value to false"

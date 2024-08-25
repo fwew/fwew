@@ -124,6 +124,7 @@ func completer(d prompt.Document) []prompt.Suggest {
 		{Text: "posFilter", Description: Text("posFilterDesc")},
 		{Text: "useAffixes", Description: Text("useAffixesDesc")},
 		{Text: "debugMode", Description: Text("debugModeDesc")},
+		{Text: "reefDialect", Description: Text("reefDialectDesc")},
 		{Text: "all", Description: Text("allDesc")},
 		{Text: "true", Description: Text("trueDesc")},
 		{Text: "false", Description: Text("falseDesc")},
