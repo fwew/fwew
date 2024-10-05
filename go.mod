@@ -6,7 +6,7 @@ toolchain go1.22.4
 
 require (
 	github.com/c-bata/go-prompt v0.2.6
-	github.com/fwew/fwew-lib/v5 v5.22.1
+	github.com/fwew/fwew-lib/v5 v5.22.2
 )
 
 require (
