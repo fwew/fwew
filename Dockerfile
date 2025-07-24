@@ -1,4 +1,4 @@
-FROM golang:alpine AS builder
+FROM docker.io/golang:alpine AS builder
 
 RUN mkdir /user && \
     echo 'user:x:504:504:user:/home/user:' > /user/passwd && \
