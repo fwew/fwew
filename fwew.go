@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"runtime"
 	"strconv"
 	"strings"
 
@@ -267,10 +268,12 @@ func slashCommand(s string, argsMode bool) {
 }
 
 func handleExit() {
-	rawModeOff := exec.Command("/bin/stty", "-raw", "echo")
-	rawModeOff.Stdin = os.Stdin
-	_ = rawModeOff.Run()
-	rawModeOff.Wait()
+	if runtime.GOOS != "windows" {
+		rawModeOff := exec.Command("/bin/stty", "-raw", "echo")
+		rawModeOff.Stdin = os.Stdin
+		_ = rawModeOff.Run()
+		rawModeOff.Wait()
+	}
 }
 
 func main() {
