@@ -19,6 +19,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 
@@ -265,17 +266,20 @@ func slashCommand(s string, argsMode bool) {
 	}
 }
 
+func handleExit() {
+	rawModeOff := exec.Command("/bin/stty", "-raw", "echo")
+	rawModeOff.Stdin = os.Stdin
+	_ = rawModeOff.Run()
+	rawModeOff.Wait()
+}
+
 func main() {
-	// Assure Dictionary is downloaded
-	err := fwew.AssureDict()
-	if err != nil {
-		panic(err)
-	}
+	defer handleExit()
+
 	var (
 		argsMode bool
 		fileMode bool
 	)
-	fwew.StartEverything()
 
 	configuration = ReadConfig()
 	// Version flag, for displaying version data
@@ -327,6 +331,13 @@ func main() {
 		configuration = WriteConfig(*configure)
 		os.Exit(0)
 	}
+
+	// Assure Dictionary is downloaded
+	err := fwew.AssureDict()
+	if err != nil {
+		panic(err)
+	}
+	fwew.StartEverything()
 
 	if fileMode { // FILE MODE
 		inFile, err := os.Open(*filename)
