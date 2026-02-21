@@ -19,7 +19,7 @@ fwew: format compile
 all: test docker cross-compile
 
 download:
-	$(DOWNLOAD) -O .fwew/dictionary-v2.txt https://tirea.learnnavi.org/dictionarydata/dictionary-v2.txt
+	$(DOWNLOAD) -q -O .fwew/dictionary-v2.txt https://tirea.learnnavi.org/dictionarydata/dictionary-v2.txt
 
 format:
 	gofmt -w $(SOURCES)
