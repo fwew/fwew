@@ -1,8 +1,6 @@
 module github.com/fwew/fwew/v5
 
-go 1.24
-
-toolchain go1.24.5
+go 1.25.0
 
 require (
 	github.com/c-bata/go-prompt v0.2.6
@@ -10,8 +8,8 @@ require (
 )
 
 require (
-	filippo.io/edwards25519 v1.1.0 // indirect
-	github.com/go-sql-driver/mysql v1.8.1 // indirect
+	filippo.io/edwards25519 v1.2.0 // indirect
+	github.com/go-sql-driver/mysql v1.9.3 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.16 // indirect
@@ -22,4 +20,4 @@ require (
 )
 
 //for testing on a local machine's fwew-lib
-//replace github.com/fwew/fwew-lib/v5 => ../fwew-lib
+replace github.com/fwew/fwew-lib/v5 => ../fwew-lib

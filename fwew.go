@@ -1,17 +1,3 @@
-//	Fwew is free software: you can redistribute it and/or modify
-// 	it under the terms of the GNU General Public License as published by
-// 	the Free Software Foundation, either version 3 of the License, or
-// 	(at your option) any later version.
-//
-//	Fwew is distributed in the hope that it will be useful,
-//	but WITHOUT ANY WARRANTY; without gen implied warranty of
-//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//	GNU General Public License for more details.
-//
-//	You should have received a copy of the GNU General Public License
-//	along with Fwew.  If not, see http://gnu.org/licenses/
-
-// Package main contains all the things
 package main
 
 import (
@@ -219,14 +205,19 @@ func slashCommand(s string, argsMode bool) {
 		setArg += strings.Join(args, space)
 		setFlags(setArg, argsMode)
 	case "/list":
-		words, err := fwew.List(args, 1)
+		words, err = fwew.List(args, 1)
 		if err != nil {
 			panic(err)
 		}
-		output([][]fwew.Word{words})
+		// prepend header word to ensure the output list starts at [1] instead of [0]
+		var wordList [][]fwew.Word
+		wordList = append(wordList, []fwew.Word{})
+		wordList[0] = append(wordList[0], fwew.Word{Navi: strings.Join(args, space)})
+		wordList[0] = append(wordList[0], words...)
+		output(wordList)
 	case "/random":
 		if numArgs > 0 {
-			// get number of random words requested
+			// get the number of random words requested
 			k, err = strconv.Atoi(args[0])
 			if err != nil {
 				fmt.Println(Text("invalidNumericError") + "\n")
@@ -241,7 +232,12 @@ func slashCommand(s string, argsMode bool) {
 				if err != nil {
 					panic(err)
 				}
-				output([][]fwew.Word{words})
+				// prepend header word to ensure the output list starts at [1] instead of [0]
+				var wordList [][]fwew.Word
+				wordList = append(wordList, []fwew.Word{})
+				wordList[0] = append(wordList[0], fwew.Word{Navi: strings.Join(args, space)})
+				wordList[0] = append(wordList[0], words...)
+				output(wordList)
 			}
 		} else {
 			fmt.Println()
@@ -272,7 +268,10 @@ func handleExit() {
 		rawModeOff := exec.Command("/bin/stty", "-raw", "echo")
 		rawModeOff.Stdin = os.Stdin
 		_ = rawModeOff.Run()
-		rawModeOff.Wait()
+		err := rawModeOff.Wait()
+		if err != nil {
+			return
+		}
 	}
 }
 
