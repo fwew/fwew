@@ -12,27 +12,33 @@ func executor(cmds string) {
 	commands := strings.Split(cmds, ",")
 	for _, cmd := range commands {
 		cmd = strings.Trim(cmd, " ")
-		if cmd != "" {
-			if strings.HasPrefix(cmd, "/") {
-				slashCommand(cmd, false)
-			} else {
-				if *numConvert {
-					fmt.Println(Convert(cmd, *reverse))
-				} else {
-					if *reverse {
-						output(fwew.TranslateToNaviHash(cmd, *language))
-					} else {
-						navi, err := fwew.TranslateFromNaviHash(cmd, !*skipFixes, false, false)
-						if err != nil {
-							panic(err)
-						}
-						output(navi)
-					}
-				}
+		if cmd == "" {
+			if len(commands) == 1 {
+				fmt.Println("")
 			}
-		} else if len(commands) == 1 {
-			fmt.Println("")
+			continue
 		}
+
+		if strings.HasPrefix(cmd, "/") {
+			slashCommand(cmd, false)
+			continue
+		}
+
+		if *numConvert {
+			fmt.Println(Convert(cmd, *reverse))
+			continue
+		}
+
+		if *reverse {
+			output(fwew.TranslateToNaviHash(cmd, *language))
+			continue
+		}
+
+		navi, err := fwew.TranslateFromNaviHash(cmd, !*skipFixes, false, false)
+		if err != nil {
+			panic(err)
+		}
+		output(navi)
 	}
 }
 
