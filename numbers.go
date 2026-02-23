@@ -16,7 +16,7 @@ var naviVocab = [][]string{
 	{"", "", "me", "pxe", "tsì", "mrr", "pu", "ki"},
 	// 0 1 2 3 4 powers of 8
 	{"", "vo", "zam", "vozam", "zazam"},
-	// 0 1 2 3 4 powers of 8 last digit
+	// 0 1 2 3 4 powers of 8 (last digit)
 	{"", "l", "", "", ""},
 }
 
@@ -198,7 +198,7 @@ func Convert(input string, reverse bool) string {
 		if !Valid(i, reverse) {
 			return fmt.Sprintf("%s\n", Text("invalidIntError"))
 		}
-		o := strconv.FormatInt(int64(i), 8)
+		o := strconv.FormatInt(i, 8)
 		output += fmt.Sprintf("Octal: %s\n", o)
 		output += fmt.Sprintf("Na'vi: %s\n", wordify(o))
 	} else {
@@ -215,8 +215,8 @@ func Convert(input string, reverse bool) string {
 		if !Valid(io, reverse) {
 			return fmt.Sprintf("%s\n", Text("invalidIntError"))
 		}
-		d := strconv.FormatInt(int64(io), 10)
-		o := strconv.FormatInt(int64(io), 8)
+		d := strconv.FormatInt(io, 10)
+		o := strconv.FormatInt(io, 8)
 		output += fmt.Sprintf("Decimal: %s\n", d)
 		if IsLetter(input) {
 			output += fmt.Sprintf("Octal: %s\n", o)
