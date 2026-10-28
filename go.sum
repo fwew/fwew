@@ -4,8 +4,8 @@ github.com/c-bata/go-prompt v0.2.6 h1:POP+nrHE+DfLYx370bedwNhsqmpCUynWPxuHi0C5vZ
 github.com/c-bata/go-prompt v0.2.6/go.mod h1:/LMAke8wD2FsNu9EXNdHxNLbd9MedkPnCdfpU9wwHfY=
 github.com/clipperhouse/uax29/v2 v2.7.0 h1:+gs4oBZ2gPfVrKPthwbMzWZDaAFPGYK72F0NJv2v7Vk=
 github.com/clipperhouse/uax29/v2 v2.7.0/go.mod h1:EFJ2TJMRUaplDxHKj1qAEhCtQPW2tJSwu5BF98AuoVM=
-github.com/fwew/fwew-lib/v5 v5.28.2 h1:k+taLtiEUzFb0nW0tRpkW1YTxOikg7RDSEQgIcZINSE=
-github.com/fwew/fwew-lib/v5 v5.28.2/go.mod h1:IIMeZxjltysy4+cVuYfokWM33LuFTBiQgs832zDc8eI=
+github.com/fwew/fwew-lib/v5 v5.28.3 h1:gd7QU1Qkt3VyB9X8bCTZ4j2W3bFpLcjEx6eplLmkt9Q=
+github.com/fwew/fwew-lib/v5 v5.28.3/go.mod h1:IIMeZxjltysy4+cVuYfokWM33LuFTBiQgs832zDc8eI=
 github.com/go-sql-driver/mysql v1.10.1 h1:arlSnNLq6a5yxGxV7qg9lF4j0C+KwD6NbQyKr9QL6ME=
 github.com/go-sql-driver/mysql v1.10.1/go.mod h1:M+cqaI7+xxXGG9swrdeUIoPG3Y3KCkF0pZej+SK+nWk=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
